@@ -1,41 +1,24 @@
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useSyncExternalStore } from "react";
 import type { Lang } from "@/lib/i18n";
+import { createPref } from "@/lib/pref";
 
-type Ctx = {
-  lang: Lang;
-  setLang: (l: Lang) => void;
-  toggle: () => void;
-};
-
-const LangContext = createContext<Ctx | null>(null);
-
-export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("es");
-
-  useEffect(() => {
-    const stored = typeof window !== "undefined" ? window.localStorage.getItem("vc-lang") : null;
-    if (stored === "es" || stored === "en") {
-      setLangState(stored);
-      return;
-    }
-    if (typeof navigator !== "undefined" && navigator.language?.toLowerCase().startsWith("en")) {
-      setLangState("en");
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof document !== "undefined") document.documentElement.lang = lang;
-    if (typeof window !== "undefined") window.localStorage.setItem("vc-lang", lang);
-  }, [lang]);
-
-  const setLang = useCallback((l: Lang) => setLangState(l), []);
-  const toggle = useCallback(() => setLangState((l) => (l === "es" ? "en" : "es")), []);
-
-  return <LangContext.Provider value={{ lang, setLang, toggle }}>{children}</LangContext.Provider>;
-}
+const langPref = createPref<Lang>({
+  key: "vc-lang",
+  values: ["es", "en"],
+  fallback: "es",
+  detect: () => (navigator.language?.toLowerCase().startsWith("en") ? "en" : null),
+});
 
 export function useLang() {
-  const ctx = useContext(LangContext);
-  if (!ctx) throw new Error("useLang must be used within LangProvider");
-  return ctx;
+  const lang = useSyncExternalStore(langPref.subscribe, langPref.get, langPref.getServer);
+  const setLang = useCallback((l: Lang) => langPref.set(l), []);
+  const toggle = useCallback(() => langPref.set(langPref.get() === "es" ? "en" : "es"), []);
+  return { lang, setLang, toggle };
+}
+
+export function useDocumentLang() {
+  const { lang } = useLang();
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 }

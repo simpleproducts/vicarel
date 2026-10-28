@@ -1,26 +1,28 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Inter, Fraunces } from "next/font/google";
+import { Instrument_Serif, Schibsted_Grotesk } from "next/font/google";
 import Head from "next/head";
-import { LangProvider } from "@/lib/lang-context";
-import Layout from "@/components/Layout";
+import { ThemeProvider } from "@/lib/theme-context";
+import { CursorProvider } from "@/lib/cursor-context";
+import Shell from "@/components/Shell";
 
-const inter = Inter({
+const grotesk = Schibsted_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-grotesk",
   display: "swap",
 });
 
-const fraunces = Fraunces({
+const instrument = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
   display: "swap",
-  axes: ["opsz", "SOFT"],
 });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <LangProvider>
+    <ThemeProvider>
       <Head>
         <title>Victoria Carelli — Photographer, Graphic Designer & Art Director</title>
         <meta
@@ -29,11 +31,13 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <div className={`${inter.variable} ${fraunces.variable}`}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+      <div className={`${grotesk.variable} ${instrument.variable} font-sans`}>
+        <CursorProvider>
+          <Shell>
+            <Component {...pageProps} />
+          </Shell>
+        </CursorProvider>
       </div>
-    </LangProvider>
+    </ThemeProvider>
   );
 }

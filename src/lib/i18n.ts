@@ -1,64 +1,58 @@
 export type Lang = "es" | "en";
 
+// Copy may use *asterisks* for the serif italic accent (see components/Rich).
 export const dict = {
-  nav: {
-    work: { es: "Trabajo", en: "Work" },
-    about: { es: "Sobre mí", en: "About" },
-    contact: { es: "Contacto", en: "Contact" },
+  meta: {
+    title: {
+      es: "Victoria Carelli — Fotografía, diseño gráfico y dirección de arte",
+      en: "Victoria Carelli — Photography, graphic design & art direction",
+    },
   },
-  home: {
-    eyebrow: {
-      es: "Estudio independiente · Buenos Aires",
-      en: "Independent studio · Buenos Aires",
-    },
-    name: { es: "Victoria Carelli", en: "Victoria Carelli" },
-    roles: {
-      es: ["Fotógrafa", "Diseñadora gráfica", "Directora de arte"],
-      en: ["Photographer", "Graphic designer", "Art director"],
-    },
-    intro: {
-      es:
-        "Construyo identidades visuales para marcas, editoriales y proyectos culturales — entre la imagen, la tipografía y la dirección de arte.",
-      en:
-        "I build visual identities for brands, editorials and cultural projects — across image-making, typography and art direction.",
-    },
-    indexLabel: { es: "Índice", en: "Index" },
-    selectedWork: { es: "Trabajo seleccionado", en: "Selected work" },
-    viewAll: { es: "Ver todo", en: "View all" },
-    available: {
-      es: "Disponible para nuevos proyectos · 2026",
-      en: "Available for new projects · 2026",
-    },
+  nav: {
+    overview: { es: "Todo", en: "Overview" },
+    info: { es: "Info", en: "Info" },
+    menu: { es: "Índice", en: "Index" },
+    close: { es: "Cerrar", en: "Close" },
+    palette: { es: "Paleta", en: "Palette" },
+    language: { es: "Idioma", en: "Language" },
+    skip: { es: "Saltar al contenido", en: "Skip to content" },
+  },
+  themes: {
+    "1": { es: "Terracota", en: "Terracotta" },
+    "2": { es: "Noche", en: "Night" },
+    "3": { es: "Color", en: "Colour" },
+  },
+  header: {
+    is: { es: "es", en: "is" },
   },
   disciplines: {
     photography: { es: "Fotografía", en: "Photography" },
     graphic: { es: "Diseño gráfico", en: "Graphic design" },
     direction: { es: "Dirección de arte", en: "Art direction" },
   },
-  work: {
-    title: { es: "Trabajo", en: "Work" },
-    lede: {
-      es:
-        "Una selección de proyectos recientes en fotografía, diseño gráfico y dirección de arte.",
-      en:
-        "A selection of recent projects across photography, graphic design and art direction.",
-    },
+  more: {
+    title: { es: "más", en: "more" },
+    top: { es: "Arriba", en: "Top" },
   },
-  about: {
-    title: { es: "Sobre mí", en: "About" },
-    body: {
+  project: {
+    client: { es: "Cliente", en: "Client" },
+    year: { es: "Año", en: "Year" },
+    discipline: { es: "Disciplina", en: "Discipline" },
+    next: { es: "siguiente", en: "next" },
+  },
+  info: {
+    statements: {
       es: [
-        "Victoria Carelli es fotógrafa, diseñadora gráfica y directora de arte. Trabaja con marcas, editoriales y proyectos culturales en la intersección de la imagen y el diseño.",
-        "Su práctica combina fotografía de autor, dirección de arte y un trabajo tipográfico cuidado para construir identidades visuales con voz propia.",
-        "Vive y trabaja entre Buenos Aires y proyectos remotos en Latinoamérica y Europa.",
+        "una *fotógrafa*, diseñadora gráfica y *directora de arte* de Buenos Aires.",
+        "Construye *identidades visuales* para marcas, editoriales y proyectos culturales.",
+        "Trabaja entre la *imagen*, la *tipografía* y la *dirección de arte*.",
       ],
       en: [
-        "Victoria Carelli is a photographer, graphic designer and art director. She works with brands, editorial outlets and cultural projects at the intersection of image and design.",
-        "Her practice blends authored photography, art direction and considered typographic work into visual identities with a clear voice.",
-        "Based in Buenos Aires, working remotely with collaborators across Latin America and Europe.",
+        "a Buenos Aires-based *photographer*, graphic designer and *art director*.",
+        "She builds *visual identities* for brands, editorials and cultural projects.",
+        "Working across *image-making*, *typography* and *art direction*.",
       ],
     },
-    clientsTitle: { es: "Clientes y colaboraciones", en: "Clients & collaborations" },
     servicesTitle: { es: "Servicios", en: "Services" },
     services: {
       es: [
@@ -78,23 +72,22 @@ export const dict = {
         "Campaigns",
       ],
     },
-  },
-  contact: {
-    title: { es: "Contacto", en: "Contact" },
-    lede: {
-      es:
-        "Para encargos, colaboraciones o consultas, escribime. Suelo responder en menos de 48 hs.",
-      en:
-        "For commissions, collaborations or enquiries, get in touch. I usually reply within 48 hours.",
+    clientsTitle: { es: "Clientes", en: "Clients" },
+    studio: { es: "Estudio", en: "Studio" },
+    write: { es: "Escribime", en: "Write" },
+    reply: {
+      es: "Suelo responder en menos de 48 hs.",
+      en: "I usually reply within 48 hours.",
     },
     elsewhere: { es: "En otros lados", en: "Elsewhere" },
-  },
-  footer: {
-    rights: {
-      es: "Todos los derechos reservados",
-      en: "All rights reserved",
+    available: {
+      es: "Disponible para nuevos proyectos · 2026",
+      en: "Available for new projects · 2026",
     },
-    site: { es: "Sitio", en: "Site" },
+  },
+  notFound: {
+    title: { es: "Nada por acá", en: "Nothing here" },
+    back: { es: "Volver al inicio", en: "Back home" },
   },
 };
 
